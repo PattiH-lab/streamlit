@@ -59,7 +59,7 @@ st.title('Protein Sequence Analysis App')
 st.write("Please upload the required files:")
 
 data_1_file = st.file_uploader("Upload CSV file with sequences", type="csv")
-igG_constant_file = st.file_uploader("Upload IgG1 constant file", type="txt")
+igG_constant_file = st.file_uploader("Upload IgG constant file", type="txt")
 light_constant_file = st.file_uploader("Upload light constant file", type="txt")
 
 if data_1_file and igG_constant_file and light_constant_file:
