@@ -4,7 +4,7 @@ from Bio import SeqIO
 import pandas as pd
 import io
 
-def analyse_seq(data_1, igg1_constant, light_constant):
+def analyse_seq(data_1, igG_constant, light_constant):
     seq_list = []
     seq_list_1 = []
     
@@ -26,7 +26,7 @@ def analyse_seq(data_1, igg1_constant, light_constant):
     
     result_list = []
     
-    for record in SeqIO.parse(io.StringIO(igg1_constant), "fasta"):
+    for record in SeqIO.parse(io.StringIO(igG_constant), "fasta"):
         sequence_data = str(record.seq)
         header = record.description
         
@@ -59,16 +59,16 @@ st.title('Protein Sequence Analysis App')
 st.write("Please upload the required files:")
 
 data_1_file = st.file_uploader("Upload CSV file with sequences", type="csv")
-igg1_constant_file = st.file_uploader("Upload IgG1 constant file", type="txt")
+igG_constant_file = st.file_uploader("Upload IgG1 constant file", type="txt")
 light_constant_file = st.file_uploader("Upload light constant file", type="txt")
 
-if data_1_file and igg1_constant_file and light_constant_file:
+if data_1_file and igG_constant_file and light_constant_file:
     data_1 = pd.read_csv(data_1_file)
-    igg1_constant = igg1_constant_file.getvalue().decode("utf-8")
+    igG_constant = igG_constant_file.getvalue().decode("utf-8")
     light_constant = light_constant_file.getvalue().decode("utf-8")
     
     if st.button('Analyze Sequences'):
-        result_df = analyse_seq(data_1, igg1_constant, light_constant)
+        result_df = analyse_seq(data_1, igG_constant, light_constant)
         st.write("Analysis complete. Here's a preview of the results:")
         st.write(result_df.head())
         
